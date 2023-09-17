@@ -19,9 +19,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_191232) do
     t.string "lastname"
     t.string "username", null: false
     t.string "email", null: false
-    t.string "password", null: false
+    t.string "password_digest", null: false
     t.string "phone_number"
-    t.boolean "email_confirm?", default: false, null: false
+    t.integer "email_confirm?", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "unique_emails", unique: true

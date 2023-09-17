@@ -15,8 +15,12 @@ gem "puma", "~> 5.0"
 # Validates email format.
 gem 'validates_email_format_of', '~> 1.7', '>= 1.7.2'
 
+# Encrypt passwords
+gem "bcrypt", "~> 3.1"
+
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-# gem "jbuilder"
+gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -52,4 +56,5 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
 
