@@ -12,6 +12,9 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
+# Validates email format.
+gem 'validates_email_format_of', '~> 1.7', '>= 1.7.2'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
@@ -39,6 +42,10 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  # For debugging purposes in the development and test environment.
+
+  gem 'byebug', '~> 11.1', '>= 11.1.3'
 end
 
 group :development do
