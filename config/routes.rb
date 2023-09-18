@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post '/signup', to: 'registrations#signup'
+      post '/login', to: 'registrations#login'
     end
   end
 end

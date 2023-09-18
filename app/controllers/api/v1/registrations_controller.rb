@@ -3,15 +3,25 @@ class Api::V1::RegistrationsController < ApplicationController
   include JsonWebToken
 
   def signup 
-    @user = User.new(registration_params)
+    @user = User.new(signup_params)
     if @user.valid?
       @user.save
       @token = encode_token(@user.id)
-      render status: 201
+      render status: 200
     else
       @error = @user
       render 'api/v1/shared/errors/validation', status: 401
     end
+  end
+
+  def login
+    @user = User.find_by_username_email(login_params[:email_or_username]).take
+    if @user&.authenticate(login_params[:password])
+      @token = encode_token(user_id: @user.id)
+      render 'api/v1/registrations/signup', status: 200
+    else
+      render json: { error: 'unauthorized' }, status: 401
+    end   
   end
 
 
@@ -19,8 +29,12 @@ class Api::V1::RegistrationsController < ApplicationController
 
   private
 
-  def registration_params
+  def signup_params
     params.permit(:firstname, :lastname, :username, :email, :password, :password_confirmation)
+  end
+
+  def login_params
+    params.permit(:email_or_username, :password)
   end
 
   def encode_token(user_id)

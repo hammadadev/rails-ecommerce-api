@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :username, :email, uniqueness: true
   validates :email, :email_format => { :message => "is not a valid email" }
 
+  scope :find_by_username_email, -> (email_or_username) {where(email: email_or_username).or(where(username: email_or_username))  }
+
 end
