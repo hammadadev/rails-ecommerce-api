@@ -1,4 +1,5 @@
 class Api::V1::RegistrationsController < ApplicationController
+  skip_before_action :authenticate_user, only: [:signup, :login]
 
   include JsonWebToken
 
@@ -17,7 +18,7 @@ class Api::V1::RegistrationsController < ApplicationController
   def login
     @user = User.find_by_username_email(login_params[:email_or_username]).take
     if @user&.authenticate(login_params[:password])
-      @token = encode_token(user_id: @user.id)
+      @token = encode_token(@user.id)
       render 'api/v1/registrations/signup', status: 200
     else
       render json: { error: 'unauthorized' }, status: 401
