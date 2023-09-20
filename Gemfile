@@ -18,6 +18,9 @@ gem 'validates_email_format_of', '~> 1.7', '>= 1.7.2'
 # Encrypt passwords
 gem "bcrypt", "~> 3.1"
 
+gem "jwt", "~> 2.7"
+
+
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -47,6 +50,15 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 
+  # To test our rails application.
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
+  
+  # To add fake test data.
+  gem 'faker', '~> 3.2', '>= 3.2.1'
+
+  # Make factories for testing in rspec.
+  gem 'factory_bot_rails', '~> 6.2'
+
   # For debugging purposes in the development and test environment.
 
   gem 'byebug', '~> 11.1', '>= 11.1.3'
@@ -59,4 +71,3 @@ end
 
 
 
-gem "jwt", "~> 2.7"
