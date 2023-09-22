@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
   has_secure_password
   
-  enum :email_confirm?, {true: 0, false: 1}
+  enum :email_confirm?, {false: 0, true: 1}
 
   validates :firstname, :username, :email, :password_digest, presence: true
   validates :username, :email, uniqueness: true
