@@ -1,7 +1,8 @@
 module AuthenticateHelpers
 include JsonWebToken
   def authenticate_user
-    token = request.headers["Authorzation"]
+    token = request.headers["Authorization"]
+    token = token.split(" ")[1] if !token.nil?
     begin
       decode = jwt_decode(token)
       @current_user = User.find(decode[:user_id])

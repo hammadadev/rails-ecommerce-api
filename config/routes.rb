@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/signup', to: 'registrations#signup'
       post '/login', to: 'registrations#login'
-      resources :products, only: [:index, :show, :update, :delete]
+      resources :products, only: [:index, :create, :show, :update, :destroy]
     end
   end
 end

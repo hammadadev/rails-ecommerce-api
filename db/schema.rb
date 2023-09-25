@@ -15,9 +15,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_194019) do
   enable_extension "plpgsql"
 
   create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "rating"
+    t.string "name", null: false
+    t.text "description", null: false
+    t.integer "rating", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
