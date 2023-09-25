@@ -4,15 +4,8 @@ class Api::V1::RegistrationsController < ApplicationController
   include JsonWebToken
 
   def signup 
-    @user = User.new(signup_params)
-    if @user.valid?
-      @user.save
+    @user = User.create!(signup_params)
       @token = encode_token(@user.id)
-      render status: 200
-    else
-      @error = @user
-      render 'api/v1/shared/errors/validation', status: 401
-    end
   end
 
   def login
