@@ -10,7 +10,6 @@ class Api::V1::ProductsController < ApplicationController
 
   def show
     @product
-    puts @product.inspect
   end
 
   def update

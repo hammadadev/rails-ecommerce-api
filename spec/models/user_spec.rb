@@ -4,8 +4,8 @@ RSpec.describe User, :type => :model do
 
   context "validation errors" do
 
-    let (:user_params) {FactoryBot.attributes_for :user, password: "q1w2e3r4"}
-    let (:user) {FactoryBot.create :user, email: "johndoe@test.com", username: "john123"}
+    let (:user_params) {attributes_for :user, password: "q1w2e3r4"}
+    let (:user) {create :user, email: "johndoe@test.com", username: "john123"}
 
     it "is valid with valid attributes" do
       response = User.new(user_params)
