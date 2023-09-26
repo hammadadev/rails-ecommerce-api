@@ -1,7 +1,6 @@
 class Api::V1::RegistrationsController < ApplicationController
   skip_before_action :authenticate_user, only: [:signup, :login]
 
-  include JsonWebToken
 
   def signup 
     @user = User.create!(signup_params)
@@ -32,6 +31,6 @@ class Api::V1::RegistrationsController < ApplicationController
   end
 
   def encode_token(user_id)
-    jwt_encode(user_id: user_id)
+    JsonWebToken.jwt_encode(user_id: user_id)
   end
 end

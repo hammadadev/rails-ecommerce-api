@@ -17,8 +17,8 @@ describe Api::V1::RegistrationsController, type: :request do
     it "should return errors when password params are missing" do
       post api_v1_signup_path, params: user_params.except(:password), as: :json
       parsed_response = JSON.parse(response.body)
-      expect(response).to have_http_status(:unauthorized)
-      expect(parsed_response["error"]).to eq({"password"=>["can't be blank"], "password_digest"=>["can't be blank"]}
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(parsed_response["errors"]).to eq({"password"=>["can't be blank"], "password_digest"=>["can't be blank"]}
       )
     end
   end  

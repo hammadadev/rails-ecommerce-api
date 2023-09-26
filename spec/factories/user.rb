@@ -6,5 +6,4 @@ FactoryBot.define do
     username {Faker::Name.unique.name}
     password_digest {BCrypt::Password.create("q1w2e3r4")}
   end
-
 end
