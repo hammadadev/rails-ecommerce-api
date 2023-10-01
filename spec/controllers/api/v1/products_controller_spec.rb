@@ -24,7 +24,7 @@ describe Api::V1::ProductsController, type: :request do
       post '/api/v1/products', params: attributes_for(:product), :headers => {'Authorization' => authenticate(@user)}, as: :json
       parsed_response = JSON.parse(response.body)
       expect(response).to have_http_status(:success)
-      expect(parsed_response["data"].keys).to match_array(["id", "name", "description", "rating"])
+      expect(parsed_response["data"].keys).to match_array(["id", "name", "description", "rating", "price", "category", "image"])
     end
 
     it "should return a error when required params are missing" do

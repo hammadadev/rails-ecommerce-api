@@ -75,3 +75,5 @@ end
 
 
 
+
+gem "rest-client", "~> 2.1"
